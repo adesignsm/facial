@@ -1,0 +1,10 @@
+body, html {
+	padding: 0;
+	margin: 0;
+	background-color: #aec;
+	text-align: center;
+}
+
+canvas {
+	position: absolute;
+}
