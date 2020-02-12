@@ -10,7 +10,7 @@ function start() {
 
 	var container = document.createElement("div");
 	container.style.position = "relative";
-	document.getElementById("container").append(container);
+	document.getElementById("image-container").append(container);
 
 	console.log("loaded");
 
