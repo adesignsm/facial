@@ -17,8 +17,6 @@ function start() {
 	img_upload.addEventListener("change", async() => {
 
 		var img = await faceapi.bufferToImage(img_upload.files[0]);
-		img.style.width = "50%";
-		img.style.height = "50%";
 		var canv = faceapi.createCanvasFromMedia(img);
 		var img_size = {
 
