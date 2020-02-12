@@ -9,4 +9,10 @@ Promise.all([
 function start() {
 
 	console.log("loaded");
+	img_upload.addEventListener("change", async() => {
+
+		var img = await faceapi.bufferToImage(img_upload.files[0]);
+		var detections = await faceapi.detectAllFaces(img).withFaceLandmarks().withfaceDescriptors();
+		console.log(detections.length);
+	});
 }
