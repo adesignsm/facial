@@ -8,12 +8,34 @@ Promise.all([
 
 function start() {
 
+	var container = document.createElement("div");
+	container.style.position = "relative";
+	document.getElementById("container").append(container);
+
 	console.log("loaded");
 
 	img_upload.addEventListener("change", async() => {
 
 		var img = await faceapi.bufferToImage(img_upload.files[0]);
+		var canv = faceapi.createCanvasFromMedia(img);
+		var img_size = {
+
+			width: img.width,
+			height: img.height
+		};
+
+		faceapi.matchDimensions(canv, img_size);
+
+		container.append(canv);
+		container.append(img);
+
 		var detections = await faceapi.detectAllFaces(img).withFaceLandmarks().withFaceDescriptors();
-		console.log(detections.length);
+		var resize_detections = faceapi.resizeResults(detections, img_size);
+
+		resize_detections.forEach(detections => {
+			var box = detections.detection.box;
+			var draw_box = new faceapi.draw.DrawBox(box, {label: "face"});
+			draw_box.draw(canv);
+		});	
 	});
 }
