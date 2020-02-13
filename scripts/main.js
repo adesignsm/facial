@@ -20,8 +20,8 @@ function start() {
 		var canv = faceapi.createCanvasFromMedia(img);
 		var img_size = {
 
-			width: img.width,
-			height: img.height
+			width: 600,
+			height: 600
 		};
 
 		faceapi.matchDimensions(canv, img_size);
