@@ -17,11 +17,13 @@ function start() {
 	img_upload.addEventListener("change", async() => {
 
 		var img = await faceapi.bufferToImage(img_upload.files[0]);
+		img.width = "600px";
+		img.style.height = "600px";
 		var canv = faceapi.createCanvasFromMedia(img);
 		var img_size = {
 
-			width: 600,
-			height: 600
+			width: img.width,
+			height: img.height
 		};
 
 		faceapi.matchDimensions(canv, img_size);
