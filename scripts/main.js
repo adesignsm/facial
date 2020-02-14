@@ -17,6 +17,19 @@ function start() {
 	img_upload.addEventListener("change", async() => {
 
 		var img = await faceapi.bufferToImage(img_upload.files[0]);
+
+		if (img.width >= 1920 && img.height >= 1080) {
+
+			img.width = window.innerWidth / 2;
+			img.height = window.innerHeight / 2;
+		
+		} else {
+
+			img.width = img.width;
+			img.height = img.height;
+		}
+
+
 		var canv = faceapi.createCanvasFromMedia(img);
 		var img_size = {
 
